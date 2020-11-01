@@ -1,5 +1,5 @@
 #!/bin/bash
-if !(type brew > /dev/null 2>&1); then
+if [ ! -d /home/linuxbrew ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile
   eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)

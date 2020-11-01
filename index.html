@@ -1,9 +1,14 @@
 #!/bin/bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+if !(type brew > /dev/null 2>&1); then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
 
-brew install git
-git clone https://github.com/0Delta/dotfiles ~/
+if !(type git > /dev/null 2>&1); then
+  brew install git
+fi
+
+git clone https://github.com/0Delta/dotfiles ~/dotfiles
 
 ~/dotfiles/install.sh

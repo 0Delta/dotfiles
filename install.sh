@@ -17,7 +17,7 @@ brew install kubectl stern kubectx k9s helm helmfile
 brew install pipenv
 # echo "set PIPENV_VENV_IN_PROJECT true" >> ~/.config/fish/fish.config
 # echo "eval (pipenv --completion)" >> ~/.config/fish/fish.config
-pipenv --completion
+eval "$(pipenv --completion)"
 
 # google-cloud-sdk
 brew install python@3.8

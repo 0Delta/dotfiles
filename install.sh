@@ -6,7 +6,7 @@ HOMEBREW_NO_AUTO_UPDATE=1
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # brew
-brew install git bash-completion powerline-go tmux make vim
+brew install git bash-completion powerline-go tmux make vim fish
 git config --global user.email "0deltast@gmail.com"
 git config --global user.name "0Delta"
 

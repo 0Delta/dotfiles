@@ -7,5 +7,3 @@ ln -s ~/dotfiles/.gitconfig ~/
 ln -s ~/dotfiles/config.fish ~/.config/fish/
 ln -s ~/dotfiles/.mybashrc ~/.mybashrc
 
-cat ~/.bashrc | grep -v "source ~/.mybashrc"
-echo "source ~/.mybashrc" >> ~/.bashrc

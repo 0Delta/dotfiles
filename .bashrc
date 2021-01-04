@@ -130,3 +130,4 @@ if [ "$TERM" != "linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/powerline-go" 
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
+source ~/.mybashrc

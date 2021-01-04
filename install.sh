@@ -1,8 +1,8 @@
 #!/bin/bash
+HOMEBREW_NO_AUTO_UPDATE=1
 
 # linuxbrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # brew
@@ -15,8 +15,9 @@ brew install kubectl stern kubectx k9s helm helmfile
 
 # pipenv
 brew install pipenv
-echo "set PIPENV_VENV_IN_PROJECT true" >> ~/.config/fish/fish.config
-echo "eval (pipenv --completion)" >> ~/.config/fish/fish.config
+# echo "set PIPENV_VENV_IN_PROJECT true" >> ~/.config/fish/fish.config
+# echo "eval (pipenv --completion)" >> ~/.config/fish/fish.config
+eval (pipenv --completion)
 
 # google-cloud-sdk
 brew install python@3.8

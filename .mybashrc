@@ -1,0 +1,8 @@
+#!/bin/bash
+export PIPENV_VENV_IN_PROJECT=true
+export PATH=${PATH}:/usr/local/go/bin
+
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval (pipenv --completion)
+
+[[ $- == *i* ]] && [ -f "/home/linuxbrew/.linuxbrew/bin/fish" ] && /home/linuxbrew/.linuxbrew/bin/fish && exit;

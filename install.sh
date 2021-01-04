@@ -21,7 +21,7 @@ pipenv --completion
 
 # google-cloud-sdk
 brew install python@3.8
-brew link python@3.8
+brew link python@3.8 --overwrite
 curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-312.0.0-linux-x86_64.tar.gz
 tar -C /tmp /tmp/google-cloud-sdk.tar.gz
 rm -rf /tmp/google-cloud-sdk.tar.gz

@@ -23,8 +23,9 @@ pipenv --completion
 brew install python@3.8
 brew link python@3.8
 curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-312.0.0-linux-x86_64.tar.gz
-tar -xvf  /tmp/google-cloud-sdk.tar.gz
-/tmp/google-cloud-sdk/install.sh
+tar -C /tmp /tmp/google-cloud-sdk.tar.gz
+rm -rf /tmp/google-cloud-sdk.tar.gz
+/tmp/google-cloud-sdk/install.sh -q --command-completion false --path-update false
 rm -rf /tmp/google-cloud-sdk
 
 # fisher
@@ -37,9 +38,10 @@ fisher install 0delta/fish-async-prompt@v3
 "
 
 # golang
-STABLE_GO=curl -L https://golang.org/dl -o- -s | grep -oP go[1-9.]+linux-amd64.tar.gz | head -n 1
-curl -o /tmp/gopkg.tar.gz https://golang.org/dl/${STABLE_GO}
-tar -C /usr/local -xzf /tmp/gopkg.tar.gz
+STABLE_GO=$(curl -L https://golang.org/dl -o- -s | grep -oP go[1-9.]+linux-amd64.tar.gz | head -n 1)
+curl -L -o /tmp/gopkg.tar.gz https://golang.org/dl/${STABLE_GO}
+mkdir -p ~/.go
+tar -C ~/.go -xzf /tmp/gopkg.tar.gz
 rm /tmp/gopkg.tar.gz
 
 $(cd $(dirname $0); pwd)/link.sh

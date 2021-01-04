@@ -22,11 +22,14 @@ eval "$(pipenv --completion)"
 # google-cloud-sdk
 brew install python@3.8
 brew link python@3.8 --overwrite
-curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-312.0.0-linux-x86_64.tar.gz
-tar -C /tmp /tmp/google-cloud-sdk.tar.gz
-rm -rf /tmp/google-cloud-sdk.tar.gz
-/tmp/google-cloud-sdk/install.sh -q --command-completion false --path-update false
-rm -rf /tmp/google-cloud-sdk
+# curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-312.0.0-linux-x86_64.tar.gz
+# tar -C /tmp -xzf /tmp/google-cloud-sdk.tar.gz
+# rm -rf /tmp/google-cloud-sdk.tar.gz
+# /tmp/google-cloud-sdk/install.sh -q --command-completion false --path-update false
+# rm -rf /tmp/google-cloud-sdk
+curl https://sdk.cloud.google.com > /tmp/install.sh
+bash /tmp/install.sh --disable-prompts
+rm /tmp/install.sh
 
 # fisher
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish

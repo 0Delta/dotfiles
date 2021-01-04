@@ -19,6 +19,8 @@ echo "set PIPENV_VENV_IN_PROJECT true" >> ~/.config/fish/fish.config
 echo "eval (pipenv --completion)" >> ~/.config/fish/fish.config
 
 # google-cloud-sdk
+brew install python@3.8
+brew link python@3.8
 curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-312.0.0-linux-x86_64.tar.gz
 tar -xvf  /tmp/google-cloud-sdk.tar.gz
 /tmp/google-cloud-sdk/install.sh
@@ -29,8 +31,8 @@ curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fi
 
 # fisher add
 fish -c "
-fisher add fisherman/z
-fisher add 0delta/fish-async-prompt@v3
+fisher install fisherman/z
+fisher install 0delta/fish-async-prompt@v3
 "
 
 $(cd $(dirname $0); pwd)/link.sh

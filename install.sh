@@ -35,4 +35,10 @@ fisher install fisherman/z
 fisher install 0delta/fish-async-prompt@v3
 "
 
+# golang
+STABLE_GO=curl -L https://golang.org/dl -o- -s | grep -oP go[1-9.]+linux-amd64.tar.gz | head -n 1
+curl -o /tmp/gopkg.tar.gz https://golang.org/dl/${STABLE_GO}
+tar -C /usr/local -xzf /tmp/gopkg.tar.gz
+rm /tmp/gopkg.tar.gz
+
 $(cd $(dirname $0); pwd)/link.sh

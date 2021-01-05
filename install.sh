@@ -47,7 +47,8 @@ fisher install 0delta/fish-async-prompt@v3
 STABLE_GO=$(curl -L https://golang.org/dl -o- -s | grep -oP go[1-9.]+linux-amd64.tar.gz | head -n 1)
 curl -L -o /tmp/gopkg.tar.gz https://golang.org/dl/${STABLE_GO}
 mkdir -p ~/.go
-tar -C ~/.go -xzf /tmp/gopkg.tar.gz
+tar -C ~/ -xzf /tmp/gopkg.tar.gz
+mv ~/go ~/.go
 rm /tmp/gopkg.tar.gz
 
 $(cd $(dirname $0); pwd)/link.sh

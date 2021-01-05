@@ -66,3 +66,22 @@ xnoremap <expr><silent> ak <SID>same_indent('-')
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
+" lazyload
+augroup lazy_load_i
+  autocmd!
+  autocmd! InsertEnter * call s:lazy_config_insert()
+augroup END
+
+function! s:lazy_config_insert()
+  packadd vim-lsp
+  packadd vim-lsp-settings
+endfunction
+
+function! s:lazy_config_vim()
+endfunction
+
+augroup lazy_load
+  autocmd!
+  autocmd FileType vim call s:lazy_config_vim()
+augroup END

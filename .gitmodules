@@ -7,3 +7,9 @@
 [submodule ".vim/pack/0delta/start/vim-lsp"]
 	path = .vim/pack/0delta/start/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp.git
+[submodule ".vim/pack/0delta/start/fern.vim"]
+	path = .vim/pack/0delta/start/fern.vim
+	url = https://github.com/lambdalisue/fern.vim
+[submodule ".vim/pack/0delta/start/vim-sonictemplate"]
+	path = .vim/pack/0delta/start/vim-sonictemplate
+	url = https://github.com/mattn/vim-sonictemplate

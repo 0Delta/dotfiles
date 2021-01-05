@@ -1,10 +1,10 @@
 [user]
-        name = 0Delta
-        emali = 0deltast@gmail.com
+	name = 0Delta
+	email = 0deltast@gmail.com
 
 [alias]
-    permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
-    s = status
-    ss = status -s
-    sw = switch
+	permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
+	s = status
+	ss = status -s
+	sw = switch
 

@@ -10,7 +10,7 @@ git submodule update
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # brew
-brew install git bash-completion powerline-go tmux make vim fish
+brew install git bash-completion powerline-go tmux make vim fish fzf npm
 rm ~/.gitconfig
 
 # kubernetes

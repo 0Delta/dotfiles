@@ -1,0 +1,6 @@
+  <dependency>
+    <groupId>{{_input_:groupId}}</groupId>
+    <artifactId>{{_input_:artifactId}}</artifactId>
+    <version>{{_input_:version}}</version>
+  </dependency>
+

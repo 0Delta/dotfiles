@@ -1,0 +1,9 @@
+https\:\/\/mvnrepository\.com\/artifact\/\(\S\+\)\/\(\S\+\)$
+    <dependency>
+      <groupId>{{$1}}</groupId>
+      <artifactId>{{$2}}</artifactId>
+      <version>{{_cursor_}}</version>
+    </dependency>
+
+https
+   test

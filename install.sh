@@ -1,14 +1,17 @@
 #!/bin/bash
 HOMEBREW_NO_AUTO_UPDATE=1
 
+# setup
+git submodule init
+git submodule update
+
 # linuxbrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # brew
 brew install git bash-completion powerline-go tmux make vim fish
-git config --global user.email "0deltast@gmail.com"
-git config --global user.name "0Delta"
+rm ~/.gitconfig
 
 # kubernetes
 brew install kubectl stern kubectx k9s helm helmfile

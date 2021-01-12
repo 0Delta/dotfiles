@@ -1,8 +1,11 @@
 #!/bin/bash
 export PIPENV_VENV_IN_PROJECT=true
-export PATH=${PATH}:${HOME}/.go/bin
+export PATH=${PATH}:${HOME}/.go/bin:${HOME}/go/bin
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(pipenv --completion)"
+
+# WSL
+alias winexp='explorer.exe $(wslpath -a -w $PWD)'
 
 [[ $- == *i* ]] && [ -f "/home/linuxbrew/.linuxbrew/bin/fish" ] && /home/linuxbrew/.linuxbrew/bin/fish && exit;

@@ -155,6 +155,11 @@ let g:tagbar_type_yaml = {
     \ }
 " }}}
 
+" goimports {{{
+let g:goimports_simplify = 1
+let g:goimports_local = 'github.com/0delta,local.package'
+" }}}
+
 " lazyload
 augroup lazy_load_i
   autocmd!
@@ -169,9 +174,6 @@ function! s:lazy_config_insert()
 endfunction
 
 function! s:lazy_config_go()
-  let g:goimports_simplify = 1
-  let g:goimports_local = 'github.com/0delta,local.package'
-  packadd vim-goimports
 endfunction
 
 augroup lazy_load

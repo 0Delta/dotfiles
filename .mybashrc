@@ -8,4 +8,10 @@ eval "$(pipenv --completion)"
 # WSL
 alias winexp='explorer.exe $(wslpath -a -w $PWD)'
 
+# backup
+if [ -f /usr/bin/lsyncd ]; then
+    /usr/bin/lsyncd /etc/lsyncd/lsyncd.conf.lua
+fi
+
 [[ $- == *i* ]] && [ -f "/home/linuxbrew/.linuxbrew/bin/fish" ] && /home/linuxbrew/.linuxbrew/bin/fish && exit;
+

@@ -123,7 +123,7 @@ if [ -f '/home/zdelta/google-cloud-sdk/path.bash.inc' ]; then . '/home/zdelta/go
 if [ -f '/home/zdelta/google-cloud-sdk/completion.bash.inc' ]; then . '/home/zdelta/google-cloud-sdk/completion.bash.inc'; fi
 
 function _update_ps1() {
-    PS1="$(/home/linuxbrew/.linuxbrew/bin/powerline-go -error $? -numeric-exit-codes -shorten-gke-names -shorten-eks-names -condensed -modules-right docker,kube -hostname-only-if-ssh colorize-hostname)"
+    PS1="$(/home/linuxbrew/.linuxbrew/bin/powerline-go -error $? -numeric-exit-codes -shorten-gke-names -shorten-eks-names -condensed -modules-right gcp,docker,kube -hostname-only-if-ssh colorize-hostname)"
 }
 
 if [ "$TERM" != "linux" ] && [ -f "/home/linuxbrew/.linuxbrew/bin/powerline-go" ]; then

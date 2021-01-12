@@ -1,5 +1,5 @@
 function fish_prompt
-    eval powerline-go -error $status -shell bare -numeric-exit-codes -shorten-gke-names -shorten-eks-names -condensed -modules-right docker,kube -hostname-only-if-ssh colorize-hostname
+    eval powerline-go -error $status -shell bare -numeric-exit-codes -shorten-gke-names -shorten-eks-names -condensed -modules-right docker -hostname-only-if-ssh colorize-hostname
 end
 
 # prehook function

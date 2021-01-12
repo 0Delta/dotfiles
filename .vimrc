@@ -73,6 +73,88 @@ let g:sonictemplate_vim_template_dir = [
 \]
 "}}}
 
+" tagbar {{{
+let g:tagbar_type_ansible = {
+  \ 'ctagstype' : 'ansible',
+  \ 'kinds' : [
+    \ 't:tasks'
+  \ ],
+  \ 'sort' : 0
+\ }
+
+let g:tagbar_type_go = {
+  \ 'ctagstype': 'go',
+  \ 'kinds' : [
+    \'f:function',
+    \'v:variables',
+    \'t:type',
+    \'c:const'
+  \]
+\}
+let g:tagbar_type_json = {
+    \ 'ctagstype' : 'json',
+    \ 'kinds' : [
+      \ 'o:objects',
+      \ 'a:arrays',
+      \ 'n:numbers',
+      \ 's:strings',
+      \ 'b:booleans',
+      \ 'z:nulls'
+    \ ],
+  \ 'sro' : '.',
+    \ 'scope2kind': {
+    \ 'object': 'o',
+      \ 'array': 'a',
+      \ 'number': 'n',
+      \ 'string': 's',
+      \ 'boolean': 'b',
+      \ 'null': 'z'
+    \ },
+    \ 'kind2scope': {
+    \ 'o': 'object',
+      \ 'a': 'array',
+      \ 'n': 'number',
+      \ 's': 'string',
+      \ 'b': 'boolean',
+      \ 'z': 'null'
+    \ },
+    \ 'sort' : 0
+    \ }
+let g:tagbar_type_make = {
+            \ 'kinds':[
+                \ 'm:macros',
+                \ 't:targets'
+            \ ]
+\}
+let g:tagbar_type_markdown = {
+    \ 'ctagstype' : 'markdown',
+    \ 'kinds' : [
+        \ 'h:Heading_L1',
+        \ 'i:Heading_L2',
+        \ 'k:Heading_L3',
+        \ 'l:Heading_L4'
+    \ ]
+\ }
+let g:tagbar_type_yaml = {
+    \ 'ctagstype' : 'yaml',
+    \ 'kinds' : [
+        \ 'a:anchors',
+        \ 's:section',
+        \ 'e:entry'
+    \ ],
+  \ 'sro' : '.',
+    \ 'scope2kind': {
+      \ 'section': 's',
+      \ 'entry': 'e'
+    \ },
+    \ 'kind2scope': {
+      \ 's': 'section',
+      \ 'e': 'entry'
+    \ },
+    \ 'sort' : 0
+    \ }
+" }}}
+
 " lazyload
 augroup lazy_load_i
   autocmd!
@@ -82,12 +164,17 @@ augroup END
 function! s:lazy_config_insert()
   packadd vim-lsp
   packadd vim-lsp-settings
+  setl omnifunc=lsp#complete
+  packadd tagbar
 endfunction
 
-function! s:lazy_config_vim()
+function! s:lazy_config_go()
+  let g:goimports_simplify = 1
+  let g:goimports_local = 'github.com/0delta,local.package'
+  packadd vim-goimports
 endfunction
 
 augroup lazy_load
   autocmd!
-  autocmd FileType vim call s:lazy_config_vim()
+  autocmd FileType go call s:lazy_config_go()
 augroup END

@@ -19,3 +19,6 @@
 [submodule ".vim/pack/0delta/opt/vim-goimports"]
 	path = .vim/pack/0delta/opt/vim-goimports
 	url = git@github.com:mattn/vim-goimports.git
+[submodule ".vim/pack/0delta/start/vim-goimports"]
+	path = .vim/pack/0delta/start/vim-goimports
+	url = git@github.com:mattn/vim-goimports.git

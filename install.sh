@@ -48,6 +48,7 @@ STABLE_GO=$(curl -L https://golang.org/dl -o- -s | grep -oP go[1-9.]+linux-amd64
 curl -L -o /tmp/gopkg.tar.gz https://golang.org/dl/${STABLE_GO}
 mkdir -p ~/.go
 tar -C ~/ -xzf /tmp/gopkg.tar.gz
+rm -rf ~/.go
 mv ~/go ~/.go
 rm /tmp/gopkg.tar.gz
 

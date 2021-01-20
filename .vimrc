@@ -157,7 +157,7 @@ let g:tagbar_type_yaml = {
 
 " goimports {{{
 let g:goimports_simplify = 1
-let g:goimports_local = 'github.com/0delta,local.package'
+let g:goimports_local = 'github.com/0delta,local.package,local.packages'
 " }}}
 
 " lazyload
@@ -166,17 +166,26 @@ augroup lazy_load_i
   autocmd! InsertEnter * call s:lazy_config_insert()
 augroup END
 
-function! s:lazy_config_insert()
-  packadd vim-lsp
-  packadd vim-lsp-settings
-  setl omnifunc=lsp#complete
+function! s:lazy_timer(timer)
   packadd tagbar
+endfunction
+
+function! s:lazy_config_insert()
 endfunction
 
 function! s:lazy_config_go()
 endfunction
 
+function! s:lsp_user_buffer_enabled()
+  setl omnifunc=lsp#complete
+endfunction
+
 augroup lazy_load
   autocmd!
   autocmd FileType go call s:lazy_config_go()
+  autocmd User lsp_buffer_enabled nested call s:lsp_user_buffer_enabled()
 augroup END
+
+let lezy_load_timer = timer_start(0, function("s:lazy_timer"))
+packadd vim-lsp
+packadd vim-lsp-settings

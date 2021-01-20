@@ -8,3 +8,5 @@
 	ss = status -s
 	sw = switch
 
+[init]
+	defaultBranch = main

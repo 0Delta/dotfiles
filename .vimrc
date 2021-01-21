@@ -169,6 +169,12 @@ augroup lazy_load_i
 augroup END
 
 function! s:lazy_timer(timer)
+  set background=dark
+  colorscheme iceberg
+  highlight Normal ctermbg=NONE guibg=NONE
+  highlight NonText ctermbg=NONE guibg=NONE
+  highlight SpecialKey ctermbg=NONE guibg=NONE
+  highlight EndOfBuffer ctermbg=NONE guibg=NONE
   packadd tagbar
 endfunction
 
@@ -191,3 +197,4 @@ augroup END
 let lezy_load_timer = timer_start(0, function("s:lazy_timer"))
 packadd vim-lsp
 packadd vim-lsp-settings
+

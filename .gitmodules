@@ -28,3 +28,6 @@
 [submodule ".vim/pack/0delta/start/vim-goaddtags"]
 	path = .vim/pack/0delta/start/vim-goaddtags
 	url = https://github.com/mattn/vim-goaddtags.git
+[submodule ".vim/pack/0delta/start/vim-terraform"]
+	path = .vim/pack/0delta/start/vim-terraform
+	url = https://github.com/hashivim/vim-terraform.git

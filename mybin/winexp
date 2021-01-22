@@ -1,0 +1,3 @@
+#!/bin/bash
+explorer.exe $(wslpath -w ${PWD})
+exit 0

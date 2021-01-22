@@ -7,4 +7,4 @@ ln -s ~/dotfiles/.bashrc ~/
 ln -s ~/dotfiles/.gitconfig ~/
 ln -s ~/dotfiles/config.fish ~/.config/fish/
 ln -s ~/dotfiles/.mybashrc ~/.mybashrc
-
+ln -s ~/dotfiles/mybin ~/bin

@@ -31,3 +31,6 @@
 [submodule ".vim/pack/0delta/start/vim-terraform"]
 	path = .vim/pack/0delta/start/vim-terraform
 	url = https://github.com/hashivim/vim-terraform.git
+[submodule ".vim/pack/0delta/start/iceberg.vim"]
+	path = .vim/pack/0delta/start/iceberg.vim
+	url = https://github.com/cocopon/iceberg.vim

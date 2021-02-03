@@ -34,3 +34,6 @@
 [submodule ".vim/pack/0delta/start/iceberg.vim"]
 	path = .vim/pack/0delta/start/iceberg.vim
 	url = https://github.com/cocopon/iceberg.vim
+[submodule ".vim/pack/0delta/start/preview-markdown.vim"]
+	path = .vim/pack/0delta/start/preview-markdown.vim
+	url = https://github.com/skanehira/preview-markdown.vim

@@ -198,3 +198,5 @@ let lezy_load_timer = timer_start(0, function("s:lazy_timer"))
 packadd vim-lsp
 packadd vim-lsp-settings
 
+let g:preview_markdown_auto_update=1
+

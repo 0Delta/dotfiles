@@ -33,4 +33,4 @@ Author:
 0Δ(0deltast@gmail.com)
 
 
-[goRef](https://pkg.go.dev/github.com/0Delta/{{_expr_:expand("%:p:h:t")}})
+[goRef]:https://pkg.go.dev/github.com/0Delta/{{_expr_:expand("%:p:h:t")}}

@@ -66,6 +66,16 @@ xnoremap <expr><silent> ak <SID>same_indent('-')
 set termguicolors
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"
+" yank {{{
+augroup Yank
+  au!
+  if executable("win32yank.exe")
+    autocmd TextYankPost * :call system('win32yank.exe -i', @")
+  endif
+augroup END
+noremap <silent> p :call setreg('"',system('win32yank.exe -o --lf'))<CR>""p
+" }}}
 
 " plugin settings {{{
 filetype plugin on

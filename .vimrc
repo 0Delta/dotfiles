@@ -208,5 +208,16 @@ let lezy_load_timer = timer_start(0, function("s:lazy_timer"))
 packadd vim-lsp
 packadd vim-lsp-settings
 
-let g:preview_markdown_auto_update=1
+augroup LspAutoFmt
+"  autocmd BufWritePre *.kt LspDocumentFormatSync
+  autocmd BufWritePre *.go LspDocumentFormatSync
+augroup END
 
+augroup Indent
+  autocmd!
+  autocmd Filetype vim setl tabstop=2 shiftwidth=2 expandtab 
+  autocmd Filetype kotlin setl tabstop=4 shiftwidth=4 expandtab 
+augroup END
+
+let g:preview_markdown_auto_update=1
+let g:lsp_diagnostics_echo_cursor = 1

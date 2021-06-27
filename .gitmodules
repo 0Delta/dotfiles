@@ -37,3 +37,9 @@
 [submodule ".vim/pack/0delta/start/preview-markdown.vim"]
 	path = .vim/pack/0delta/start/preview-markdown.vim
 	url = https://github.com/skanehira/preview-markdown.vim
+[submodule ".vim/pack/0delta/start/kotlin-vim"]
+	path = .vim/pack/0delta/start/kotlin-vim
+	url = https://github.com/udalov/kotlin-vim
+[submodule ".vim/pack/0delta/start/vim-polyglot"]
+	path = .vim/pack/0delta/start/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot

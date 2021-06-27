@@ -9,6 +9,11 @@ eval "$(pipenv --completion)"
 # WSL
 alias winexp='explorer.exe $(wslpath -a -w $PWD)'
 
+if [ -f /home/linuxbrew/.linuxbrew/bin/kubectl ]; then
+    alias kc='kubectl'
+    alias k='kubectl'
+fi
+
 # backup
 if [ -f /usr/bin/lsyncd ]; then
     /usr/bin/lsyncd /etc/lsyncd/lsyncd.conf.lua

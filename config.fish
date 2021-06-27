@@ -33,3 +33,10 @@ function fish_right_prompt -d 'Write out the right prompt'
   printf $pt
 end
 
+# wsl2 timesync
+function fish_greeting
+  if test -f ~/bin/wsl_timesync.sh
+     and test -x ~/bin/wsl_timesync.sh
+      ~/bin/wsl_timesync.sh&
+  end
+end

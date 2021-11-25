@@ -2,3 +2,6 @@
 	func (f *{{$1}}){{$2}} {
 		{{_cursor_}}
 	}
+
+\(.*\)err.w\%[rap]$
+	{{$1}}fmt.Errorf("{{_cursor_}}: %w", err)

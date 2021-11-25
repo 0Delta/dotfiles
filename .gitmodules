@@ -43,3 +43,12 @@
 [submodule ".vim/pack/0delta/start/vim-polyglot"]
 	path = .vim/pack/0delta/start/vim-polyglot
 	url = https://github.com/sheerun/vim-polyglot
+[submodule ".vim/pack/0delta/opt/vim-delve"]
+	path = .vim/pack/0delta/opt/vim-delve
+	url = https://github.com/sebdah/vim-delve.git
+[submodule ".vim/pack/0delta/start/vim-delve"]
+	path = .vim/pack/0delta/start/vim-delve
+	url = https://github.com/sebdah/vim-delve.git
+[submodule ".vim/pack/0delta/start/vim-gomod"]
+	path = .vim/pack/0delta/start/vim-gomod
+	url = https://github.com/mattn/vim-gomod.git

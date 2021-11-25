@@ -40,3 +40,9 @@ function fish_greeting
       ~/bin/wsl_timesync.sh&
   end
 end
+
+# terraform 0.13.1
+alias terraform13='docker run --rm -it -v $HOME/.config/gcloud:/root/.config/gcloud:ro -v $PWD:/app --workdir /app hashicorp/terraform:0.13.1'
+
+alias tree='pwd;find . | sort | sed \'1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g\''
+

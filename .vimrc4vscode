@@ -1,0 +1,32 @@
+set encoding=utf-8
+scriptencoding utf-8
+
+nnoremap ; :
+inoremap jk <Esc>
+
+" レコーディングモードの一部無効化
+nnoremap qH <Nop>
+nnoremap qJ <Nop>
+nnoremap qK <Nop>
+nnoremap qL <Nop>
+nnoremap qQ <Nop>
+
+nnoremap qh <Nop>
+nnoremap qj <Nop>
+nnoremap qk <Nop>
+nnoremap ql <Nop>
+nnoremap qq <Nop>
+
+set relativenumber
+set number
+set ruler
+set showcmd
+set showmatch
+set hlsearch
+set textwidth=0
+set scrolloff=10
+set cursorline
+set list
+
+set laststatus=2
+syntax enable

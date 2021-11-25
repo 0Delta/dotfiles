@@ -192,6 +192,8 @@ function! s:lazy_config_insert()
 endfunction
 
 function! s:lazy_config_go()
+  set foldmethod=syntax
+  set foldnestmax=1
 endfunction
 
 function! s:lsp_user_buffer_enabled()
@@ -215,9 +217,19 @@ augroup END
 
 augroup Indent
   autocmd!
-  autocmd Filetype vim setl tabstop=2 shiftwidth=2 expandtab 
-  autocmd Filetype kotlin setl tabstop=4 shiftwidth=4 expandtab 
+  autocmd Filetype vim setl tabstop=2 shiftwidth=2 expandtab
+  autocmd Filetype kotlin setl tabstop=4 shiftwidth=4 expandtab
 augroup END
+
+let g:fern#default_exclude = '^\%(\.git\|\go.sum\)$'
 
 let g:preview_markdown_auto_update=1
 let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_settings_filetype_go=['golangci-lint-langserver', 'gopls']
+
+" tasker
+" ref: https://blog.ksoichiro.com/ja/post/2018/12/vim/
+augroup Todo
+  autocmd!
+  autocmd BufNewFile,BufRead *.todo setf todo
+augroup END

@@ -1,0 +1,4 @@
+#!/bin/bash
+CNF=$(gcloud config configurations list | tail -n +2 | fzf | cut -d ' ' -f 1)
+gcloud config configurations activate ${CNF}
+gcloud config list

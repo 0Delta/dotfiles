@@ -33,6 +33,11 @@ function fish_right_prompt -d 'Write out the right prompt'
   printf $pt
 end
 
+# rbenv
+if type -q rbenv
+  status --is-interactive; and rbenv init - fish | source
+end
+
 # wsl2 timesync
 function fish_greeting
   if test -f ~/bin/wsl_timesync.sh
@@ -44,5 +49,27 @@ end
 # terraform 0.13.1
 alias terraform13='docker run --rm -it -v $HOME/.config/gcloud:/root/.config/gcloud:ro -v $PWD:/app --workdir /app hashicorp/terraform:0.13.1'
 
+alias terraform112='docker run --rm -it -v $HOME/.config/gcloud:/root/.config/gcloud:ro -v $PWD:/app --workdir /app hashicorp/terraform:1.1.2'
+
 alias tree='pwd;find . | sort | sed \'1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g\''
 
+# yubico
+if type -q yubico-piv-tool.exe
+    alias yubico-piv-tool='yubico-piv-tool.exe'
+end
+
+# kubectl
+if type -q /home/linuxbrew/.linuxbrew/bin/kubectl
+    alias kc='kubectl'
+    alias k='kubectl'
+end
+
+# memo
+alias todo='vim ~/.todo.md'
+
+# golangci-lint
+if type -q docker
+  alias golangci-lint='docker run --rm -v "$PWD:/app" -w /app golangci/golangci-lint:latest golangci-lint'
+end
+
+export EDITOR=vim

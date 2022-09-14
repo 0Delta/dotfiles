@@ -1,3 +1,4 @@
+" base {{{
 set encoding=utf-8
 scriptencoding utf-8
 
@@ -30,6 +31,7 @@ set list
 
 set laststatus=2
 syntax enable
+" }}}
 
 " 背景透過{{{
 augroup TransparentBG
@@ -172,7 +174,90 @@ let g:goimports_simplify = 1
 let g:goimports_local = 'github.com/0delta,local.package,local.packages'
 " }}}
 
-" lazyload
+" fold {{{
+function! Go_fold(lnum)
+  " set debug=msg
+  let l:thisline = getline(a:lnum)
+  if match(l:thisline, '^import (') >= 0
+    return '1'
+  elseif match(l:thisline, '^func') >= 0
+    return '1'
+  elseif match(l:thisline, '^type.*{') >= 0
+    return '1'
+  elseif match(l:thisline, '^var (') >= 0
+    return '1'
+  elseif match(l:thisline, '^const (') >= 0
+    return '1'
+  elseif match(l:thisline, '^)') >= 0
+    return '<1'
+  elseif match(l:thisline, '^}') >= 0
+    return '<1'
+  elseif match(l:thisline, '^\s*if err != nil {') >= 0
+    return '2'
+  elseif match(l:thisline, '^\s*}') >= 0
+    return '<2'
+  else
+    return '='
+  endif
+endfunction
+
+function! Go_fold_text()
+  let line = getline(v:foldstart)
+  if v:foldlevel == 1
+    let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
+    return v:folddashes . " " . sub
+  elseif v:foldlevel == 2
+    let i = 0
+    let line = substitute(line, 'if err != nil {', 'iferr:', 'g')
+    let line = substitute(line, '\t', '  ', 'g')
+    let sub = line
+    while i < v:foldend - v:foldstart
+      let i += 1
+      let line2 = getline(v:foldstart+i)
+      let line2 = substitute(line2, '\s', ' ', 'g')
+      let line2 = substitute(line2, 'return', '↗', 'g')
+      let line2 = substitute(line2, '}', '', 'g')
+      let sub = sub . line2
+    endwhile
+    return sub
+  else
+    let sub = substitute(line, '/\*\|\*/\|{{{\d\=', '', 'g')
+    return v:folddashes . " " . sub
+  endif
+endfunction
+
+function! Vim_fold(lnum)
+  set debug=msg
+  let l:thisline = getline(a:lnum)
+  if match(l:thisline, '^".*{{{') >= 0
+    return '1'
+  elseif match(l:thisline, '^".*}}}') >= 0
+    return '<1'
+  else
+    return '='
+  endif
+endfunction
+" }}}
+
+" lsp {{{
+packadd vim-lsp
+packadd vim-lsp-settings
+
+augroup LspAutoFmt
+"  autocmd BufWritePre *.kt LspDocumentFormatSync
+  autocmd BufWritePre *.go LspDocumentFormatSync redraw!
+augroup END
+
+function! s:lsp_user_buffer_enabled()
+  setl omnifunc=lsp#complete
+endfunction
+
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_settings_filetype_go=['golangci-lint-langserver', 'gopls']
+let g:lsp_settings_filetype_json=['vscode-json-language-server']
+" }}}
+
+" lazyload {{{
 augroup lazy_load_i
   autocmd!
   autocmd! InsertEnter * call s:lazy_config_insert()
@@ -192,28 +277,28 @@ function! s:lazy_config_insert()
 endfunction
 
 function! s:lazy_config_go()
-  set foldmethod=syntax
-  set foldnestmax=1
+  " set foldmethod=syntax
+  set foldmethod=expr
+  set foldexpr=Go_fold(v:lnum)
+  set foldtext=Go_fold_text()
+  set foldnestmax=2
 endfunction
 
-function! s:lsp_user_buffer_enabled()
-  setl omnifunc=lsp#complete
+function! s:lazy_config_vim()
+  set foldmethod=expr
+  set foldexpr=Vim_fold(v:lnum)
+  set foldnestmax=1
 endfunction
 
 augroup lazy_load
   autocmd!
   autocmd FileType go call s:lazy_config_go()
+  autocmd FileType vim call s:lazy_config_vim()
   autocmd User lsp_buffer_enabled nested call s:lsp_user_buffer_enabled()
 augroup END
 
 let lezy_load_timer = timer_start(0, function("s:lazy_timer"))
-packadd vim-lsp
-packadd vim-lsp-settings
-
-augroup LspAutoFmt
-"  autocmd BufWritePre *.kt LspDocumentFormatSync
-  autocmd BufWritePre *.go LspDocumentFormatSync
-augroup END
+" }}}
 
 augroup Indent
   autocmd!
@@ -222,10 +307,7 @@ augroup Indent
 augroup END
 
 let g:fern#default_exclude = '^\%(\.git\|\go.sum\)$'
-
 let g:preview_markdown_auto_update=1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:lsp_settings_filetype_go=['golangci-lint-langserver', 'gopls']
 
 " tasker
 " ref: https://blog.ksoichiro.com/ja/post/2018/12/vim/

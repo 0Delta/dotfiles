@@ -1,4 +1,13 @@
 #!/bin/bash
+if !(type dnf > /dev/null 2>&1); then
+  sudo dnf install curl git
+fi
+
+if !(type apt > /dev/null 2>&1); then
+  sudo apt install curl git
+fi
+
+
 if [ ! -d /home/linuxbrew ]; then
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.profile

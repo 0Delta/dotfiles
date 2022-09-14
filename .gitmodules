@@ -52,3 +52,6 @@
 [submodule ".vim/pack/0delta/start/vim-gomod"]
 	path = .vim/pack/0delta/start/vim-gomod
 	url = https://github.com/mattn/vim-gomod.git
+[submodule ".vim/pack/0delta/opt/vim-gomod"]
+	path = .vim/pack/0delta/opt/vim-gomod
+	url = http://github.com/mattn/vim-gomod

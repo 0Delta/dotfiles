@@ -10,7 +10,7 @@ git submodule update
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 
 # brew
-brew install git bash-completion powerline-go tmux make vim fish fzf npm
+brew install git bash-completion tmux make vim fzf npm
 rm ~/.gitconfig
 
 # kubernetes
@@ -23,8 +23,8 @@ brew install pipenv
 eval "$(pipenv --completion)"
 
 # google-cloud-sdk
-brew install python@3.8
-brew link python@3.8 --overwrite
+brew install python@3
+brew link python@3 --overwrite
 # curl -o /tmp/google-cloud-sdk.tar.gz https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-312.0.0-linux-x86_64.tar.gz
 # tar -C /tmp -xzf /tmp/google-cloud-sdk.tar.gz
 # rm -rf /tmp/google-cloud-sdk.tar.gz
@@ -33,6 +33,9 @@ brew link python@3.8 --overwrite
 curl https://sdk.cloud.google.com > /tmp/install.sh
 bash /tmp/install.sh --disable-prompts
 rm /tmp/install.sh
+
+# fish
+brew install fish powerline-go
 
 # fisher
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish

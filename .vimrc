@@ -175,6 +175,49 @@ let g:goimports_local = 'github.com/0delta,local.package,local.packages'
 " }}}
 
 " fold {{{
+function! Json_fold(lnum)
+  set debug=msg
+  let l:thisline = getline(a:lnum)
+  if match(l:thisline, '^.*[[{][^\]}]*$') >= 0
+    return 'a1'
+  elseif match(l:thisline, '^[^{[]*[}\]]') >= 0
+    return 's1'
+  else
+    return '='
+  endif
+endfunction
+
+function! Json_fold_text()
+  if v:foldlevel == 2
+    let i = 0
+    let sev = "UNKNOWN"
+    let mes = ""
+    while i < v:foldend - v:foldstart
+      let i += 1
+      let line2 = getline(v:foldstart+i)
+      if match(line2, 'severity') >= 0
+        let line2 = substitute(line2, '.*:\s*"', '', 'g')
+        let sev = substitute(line2, '",', '', 'g')
+      endif
+      let line2 = getline(v:foldstart+i)
+      if match(line2, 'message') >= 0
+        let mes = line2
+      endif
+      let line2 = getline(v:foldstart+i)
+      if match(line2, 'logName') >= 0
+        if mes == ""
+          let mes = line2
+        endif
+      endif
+    endwhile
+    return v:folddashes . sev . " " . mes
+  endif
+  let line = getline(v:foldstart)
+  let sub = substitute(line, '^.\{-}"', '', 'g')
+  let sub = substitute(sub, '".*$', '', 'g')
+  return repeat("  ", v:foldlevel) . sub
+endfunction
+
 function! Go_fold(lnum)
   " set debug=msg
   let l:thisline = getline(a:lnum)
@@ -276,6 +319,13 @@ endfunction
 function! s:lazy_config_insert()
 endfunction
 
+function! s:lazy_config_json()
+  " set foldmethod=syntax
+  set foldmethod=expr
+  set foldexpr=Json_fold(v:lnum)
+  set foldtext=Json_fold_text()
+endfunction
+
 function! s:lazy_config_go()
   " set foldmethod=syntax
   set foldmethod=expr
@@ -293,6 +343,7 @@ endfunction
 augroup lazy_load
   autocmd!
   autocmd FileType go call s:lazy_config_go()
+  autocmd FileType json call s:lazy_config_json()
   autocmd FileType vim call s:lazy_config_vim()
   autocmd User lsp_buffer_enabled nested call s:lsp_user_buffer_enabled()
 augroup END

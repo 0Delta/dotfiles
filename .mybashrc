@@ -1,6 +1,6 @@
 #!/bin/bash
 export PIPENV_VENV_IN_PROJECT=true
-export PATH=${PATH}:${HOME}/.go/go/bin
+export PATH=${PATH}:${HOME}/.go/bin
 export PATH=${PATH}:${HOME}/go/bin
 export PATH=${PATH}:${HOME}/bin
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
@@ -18,8 +18,8 @@ fi
 
 # go
 export GO111MODULE=auto
-if [ -f ${HOME}/go ]; then
-    export GOPATH=${HOME}/go
+if [ -f ${HOME}/.go ]; then
+    export GOPATH=${HOME}/.go
 fi
 
 # # backup

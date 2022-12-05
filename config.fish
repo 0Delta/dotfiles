@@ -46,6 +46,11 @@ function fish_greeting
   end
 end
 
+# gcloud
+if type -q gcloud
+  source $HOME/google-cloud-sdk/path.fish.inc
+end
+
 # terraform 0.13.1
 alias terraform13='docker run --rm -it -v $HOME/.config/gcloud:/root/.config/gcloud:ro -v $PWD:/app --workdir /app hashicorp/terraform:0.13.1'
 

@@ -298,6 +298,8 @@ endfunction
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_settings_filetype_go=['golangci-lint-langserver', 'gopls']
 let g:lsp_settings_filetype_json=['vscode-json-language-server']
+let g:lsp_untitled_buffer_enabled=0
+
 " }}}
 
 " lazyload {{{
@@ -332,6 +334,8 @@ function! s:lazy_config_go()
   set foldexpr=Go_fold(v:lnum)
   set foldtext=Go_fold_text()
   set foldnestmax=2
+
+  let g:goimports = 1
 endfunction
 
 function! s:lazy_config_vim()

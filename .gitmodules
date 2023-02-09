@@ -58,3 +58,6 @@
 [submodule ".vim/pack/0delta/opt/vim-healthcheck"]
 	path = .vim/pack/0delta/opt/vim-healthcheck
 	url = https://github.com/rhysd/vim-healthcheck.git
+[submodule ".vim/pack/0delta/start/vim-lsp"]
+	path = .vim/pack/0delta/start/vim-lsp
+	url = https://github.com/prabirshrestha/vim-lsp.git

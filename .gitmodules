@@ -55,3 +55,6 @@
 [submodule ".vim/pack/0delta/opt/vim-gomod"]
 	path = .vim/pack/0delta/opt/vim-gomod
 	url = http://github.com/mattn/vim-gomod
+[submodule ".vim/pack/0delta/opt/vim-healthcheck"]
+	path = .vim/pack/0delta/opt/vim-healthcheck
+	url = https://github.com/rhysd/vim-healthcheck.git

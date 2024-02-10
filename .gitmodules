@@ -61,3 +61,21 @@
 [submodule ".vim/pack/0delta/start/vim-lsp"]
 	path = .vim/pack/0delta/start/vim-lsp
 	url = https://github.com/prabirshrestha/vim-lsp.git
+[submodule ".vim/pack/0delta/opt/vim-jsbeautify"]
+	path = .vim/pack/0delta/opt/vim-jsbeautify
+	url = https://github.com/maksimr/vim-jsbeautify
+[submodule ".vim/pack/0delta/start/asyncomplete-nextword.vim"]
+	path = .vim/pack/0delta/start/asyncomplete-nextword.vim
+	url = https://github.com/high-moctane/asyncomplete-nextword.vim
+[submodule ".vim/pack/0delta/opt/copilot.vim"]
+	path = .vim/pack/0delta/opt/copilot.vim
+	url = https://github.com/github/copilot.vim.git
+[submodule ".vim/pack/0delta/start/copilot.vim"]
+	path = .vim/pack/0delta/start/copilot.vim
+	url = https://github.com/github/copilot.vim.git
+[submodule ".vim/pack/0delta/start/markdown-preview.nvim"]
+	path = .vim/pack/0delta/start/markdown-preview.nvim
+	url = https://github.com/iamcco/markdown-preview.nvim
+[submodule ".vim/pack/0delta/opt/vim-showtime"]
+	path = .vim/pack/0delta/opt/vim-showtime
+	url = https://github.com/thinca/vim-showtime.git

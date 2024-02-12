@@ -1,6 +1,7 @@
 [user]
 	name = 0Delta
 	email = 0deltast@gmail.com
+	signingkey = 0x41D525F5F4253165
 
 [alias]
 	permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
@@ -12,3 +13,9 @@
 	defaultBranch = main
 [pull]
 	ff = only
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true
+[tag]
+	gpgsign = true

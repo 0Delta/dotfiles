@@ -1,9 +1,9 @@
 #!/bin/bash
-if !(type dnf > /dev/null 2>&1); then
+if (type dnf > /dev/null 2>&1); then
   sudo dnf install curl git
 fi
 
-if !(type apt > /dev/null 2>&1); then
+if (type apt > /dev/null 2>&1); then
   sudo apt install curl git
 fi
 

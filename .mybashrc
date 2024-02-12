@@ -1,9 +1,9 @@
 #!/bin/bash
 export PIPENV_VENV_IN_PROJECT=true
-export PATH=${PATH}:${HOME}/.go/bin
-export PATH=${PATH}:${HOME}/go/bin
 export PATH=${PATH}:${HOME}/bin
+export PATH=${PATH}:${HOME}/.local/bin
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export DOCKER_BUILDKIT=1
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
@@ -17,7 +17,7 @@ if [ -f /home/linuxbrew/.linuxbrew/bin/kubectl ]; then
 fi
 
 # go
-export GO111MODULE=auto
+export GO111MODULE=on
 if [ -f ${HOME}/.go ]; then
     export GOPATH=${HOME}/.go
 fi
@@ -39,5 +39,8 @@ if [ -f '/home/zdelta/google-cloud-sdk/path.bash.inc' ]; then . '/home/zdelta/go
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/zdelta/google-cloud-sdk/completion.bash.inc' ]; then . '/home/zdelta/google-cloud-sdk/completion.bash.inc'; fi
+
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+export DBUS_SESSION_BUS_ADDRESS="unix:path=${XDG_RUNTIME_DIR}/bus"
 
 alias todo='vim ~/.todo.md'

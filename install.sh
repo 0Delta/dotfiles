@@ -83,3 +83,12 @@ EOF
 awk '!a[$0]++' /etc/resolv.conf | sudo tee /etc/resolv.conf
 
 $(cd $(dirname $0); pwd)/link.sh
+
+cat <<EOF > ~/WinHome/restart_wsl.bat 
+wsl --shutdown
+@if "%1"=="" (
+  wsl
+) else (
+  wsl "%*")
+EOF
+cmd.exe /c start %USERPROFILE%\\restart_wsl.bat ~/dotfiles/install_container.sh

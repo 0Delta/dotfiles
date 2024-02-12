@@ -27,6 +27,7 @@ set hlsearch
 set textwidth=0
 set scrolloff=10
 set cursorline
+set cursorcolumn
 set list
 
 set laststatus=2
@@ -70,6 +71,15 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 "
 " yank {{{
+" augroup Yank
+"   au!
+"   if executable("gocopy.exe")
+"     autocmd TextYankPost * :call system('gocopy.exe', @")
+"   endif
+" augroup END
+" if executable("gopaste.exe")
+"   noremap <silent> p :call setreg('"',system('gopaste.exe'))<CR>""p
+" endif
 augroup Yank
   au!
   if executable("win32yank.exe")
@@ -286,19 +296,49 @@ endfunction
 packadd vim-lsp
 packadd vim-lsp-settings
 
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
 augroup LspAutoFmt
 "  autocmd BufWritePre *.kt LspDocumentFormatSync
   autocmd BufWritePre *.go LspDocumentFormatSync redraw!
+  autocmd BufWritePre *.md LspDocumentFormatSync redraw!
 augroup END
+
+nnoremap <M-j> yy
+nnoremap <A-j> yy
 
 function! s:lsp_user_buffer_enabled()
   setl omnifunc=lsp#complete
 endfunction
 
+if !has('nvim')
+  let g:lsp_diagnostics_float_cursor = 1
+endif
+
 let g:lsp_diagnostics_echo_cursor = 1
 let g:lsp_settings_filetype_go=['golangci-lint-langserver', 'gopls']
 let g:lsp_settings_filetype_json=['vscode-json-language-server']
+let g:lsp_settings_filetype_markdown=['efm-langserver']
 let g:lsp_untitled_buffer_enabled=0
+let g:lsp_settings = {
+\  'pylsp-all': {
+\    'workspace_config': {
+\      'pylsp': {
+\        'configurationSources': ['flake8'],
+\        'plugins': {
+\          'pycodestyle': {
+\            'ignore': ["E501"]
+\          }
+\        }
+\      }
+\    }
+\  },
+\  'efm-langserver': {
+\    'disabled': v:false,
+\    'allowlist': ['markdown'],
+\  },
+\}
 
 " }}}
 
@@ -315,17 +355,23 @@ function! s:lazy_timer(timer)
   highlight NonText ctermbg=NONE guibg=NONE
   highlight SpecialKey ctermbg=NONE guibg=NONE
   highlight EndOfBuffer ctermbg=NONE guibg=NONE
+  highlight CursorColumn ctermbg=NONE guibg=NONE ctermfg=darkgray guifg=darkgray
   packadd tagbar
+  packadd vim-showtime
 endfunction
+
 
 function! s:lazy_config_insert()
 endfunction
 
 function! s:lazy_config_json()
   " set foldmethod=syntax
+  packadd vim-jsbeautify
   set foldmethod=expr
   set foldexpr=Json_fold(v:lnum)
   set foldtext=Json_fold_text()
+  map <c-f> :call JsonBeautify()<cr>
+  autocmd FileType json vnoremap <buffer> <c-f> :call RangeJsonBeautify()<cr>
 endfunction
 
 function! s:lazy_config_go()
@@ -344,11 +390,39 @@ function! s:lazy_config_vim()
   set foldnestmax=1
 endfunction
 
+function! s:lazy_config_js()
+  packadd vim-jsbeautify
+  map <c-f> :call JsBeautify()<cr>
+  autocmd FileType javascript vnoremap <buffer> <c-f> :call RangeJsBeautify()<cr>
+endfunction
+
+function! s:lazy_config_jsx()
+  packadd vim-jsbeautify
+  map <c-f> :call JsxBeautify()<cr>
+  autocmd FileType jsx vnoremap <buffer> <c-f> :call RangeJsxBeautify()<cr>
+endfunction
+
+function! s:lazy_config_html()
+  packadd vim-jsbeautify
+  map <c-f> :call HtmlBeautify()<cr>
+  autocmd FileType html vnoremap <buffer> <c-f> :call RangeHtmlBeautify()<cr>
+endfunction
+
+function! s:lazy_config_css()
+  packadd vim-jsbeautify
+  map <c-f> :call CssBeautify()<cr>
+  autocmd FileType css vnoremap <buffer> <c-f> :call RangeCSSBeautify()<cr>
+endfunction
+
 augroup lazy_load
   autocmd!
   autocmd FileType go call s:lazy_config_go()
   autocmd FileType json call s:lazy_config_json()
   autocmd FileType vim call s:lazy_config_vim()
+  autocmd FileType javascript call s:lazy_config_js()
+  autocmd FileType jsx call s:lazy_config_jsx()
+  autocmd FileType html call s:lazy_config_html()
+  autocmd FileType css call s:lazy_config_css()
   autocmd User lsp_buffer_enabled nested call s:lsp_user_buffer_enabled()
 augroup END
 
@@ -370,3 +444,4 @@ augroup Todo
   autocmd!
   autocmd BufNewFile,BufRead *.todo setf todo
 augroup END
+

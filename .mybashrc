@@ -5,6 +5,8 @@ export PATH=${PATH}:${HOME}/.local/bin
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export DOCKER_BUILDKIT=1
 
+ulimit -n 65536
+
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(_PIPENV_COMPLETE=bash_source pipenv)"
 

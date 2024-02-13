@@ -4,6 +4,8 @@ export PATH=${PATH}:${HOME}/bin
 export PATH=${PATH}:${HOME}/.local/bin
 export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export DOCKER_BUILDKIT=1
+export EDITOR=vim
+export DISPLAY=":0"
 
 ulimit -n 65536
 

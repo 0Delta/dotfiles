@@ -20,7 +20,7 @@ function fish_right_prompt -d 'Write out the right prompt'
     end
   end
   set pt $pt(set_color white)/
-  if test -d $HOME/google-cloud-sdk
+  if type -q gcloud
     set -l gcc (gcloud config get-value project --quiet 2>/dev/null 2>/dev/null)
     if [ "$gcc" = "" ];
       set pt $pt(set_color red)(echo ---)
@@ -49,6 +49,7 @@ end
 # gcloud
 if type -q gcloud
   source $HOME/google-cloud-sdk/path.fish.inc
+  set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 end
 
 # terraform 0.13.1
@@ -77,4 +78,11 @@ if type -q docker
   alias golangci-lint='docker run --rm -v "$PWD:/app" -w /app golangci/golangci-lint:latest golangci-lint'
 end
 
-export EDITOR=vim
+
+function fish_right_prompt_loading_indicator -a last_prompt
+    echo -n "$last_prompt" | sed -r 's/\x1B\[[0-9;]*[JKmsu]//g' | read -zl uncolored_last_prompt
+    echo -n (set_color brblack)"$uncolored_last_prompt"(set_color normal)
+end
+
+fish_user_key_bindings
+

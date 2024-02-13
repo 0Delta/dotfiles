@@ -78,6 +78,49 @@ if type -q docker
   alias golangci-lint='docker run --rm -v "$PWD:/app" -w /app golangci/golangci-lint:latest golangci-lint'
 end
 
+# gpg
+set wsl2_ssh_pageant_bin "$HOME/.ssh/wsl2-ssh-pageant.exe"
+set -Ux SSH_AUTH_SOCK "$HOME/.ssh/agent.sock"
+# set -Ux SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+if not ss -a | grep -q "$SSH_AUTH_SOCK";
+  echo "Startup ssh wsl2_ssh_pageant 1" > /tmp/ssh.log
+  rm -f "$SSH_AUTH_SOCK"
+  if test -x "$wsl2_ssh_pageant_bin";
+    echo "Startup ssh wsl2_ssh_pageant" >> /tmp/ssh.log
+    setsid nohup socat -ls -v -s UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin --verbose" >> /tmp/ssh.log 2>&1 &
+  else
+    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+  end
+end
+
+# set -Ux GPG_AGENT_SOCK "$HOME/.gnupg/S.gpg-agent"
+set -Ux GPG_AGENT_SOCK (gpgconf --list-dirs agent-socket)
+set -x WINHOME (wslpath -m ~/WinHome)
+# if not ss -a | grep -q "$GPG_AGENT_SOCK";
+if not ps aux | grep -v grep | grep -q "$GPG_AGENT_SOCK";
+  echo "Startup gpg wsl2_ssh_pageant 1" > /tmp/gpg.log
+  rm -rf "$GPG_AGENT_SOCK"
+  if test -x "$wsl2_ssh_pageant_bin";
+    echo "Startup gpg wsl2_ssh_pageant" >> /tmp/gpg.log
+    setsid nohup socat -dd -ls -v -s UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin --verbose --gpg S.gpg-agent --gpgConfigBasepath '$WINHOME/AppData/Roaming/gnupg' --logfile /tmp/gpg.log" >> /tmp/gpg.log 2>&1 &
+  else
+    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+  end
+end
+
+# set -x GPG_AGENT_EXTRA_SOCK "$HOME/.gnupg/S.gpg-agent.extra"
+set -Ux GPG_AGENT_SOCK (gpgconf --list-dirs agent-extra-socket)
+if not ss -a | grep -q "$GPG_AGENT_EXTRA_SOCK";
+  echo "Startup gpg wsl2_ssh_pageant 2" > /tmp/gpg_ex.log
+  rm -rf "$GPG_AGENT_EXTRA_SOCK"
+  if test -x "$wsl2_ssh_pageant_bin";
+    echo "Startup gpgex wsl2_ssh_pageant" >> /tmp/gpg_ex.log
+    setsid nohup socat -ls -v -s UNIX-LISTEN:"$GPG_AGENT_EXTRA_SOCK,fork" EXEC:"$wsl2_ssh_pageant_bin --verbose --gpg S.gpg-agent.extra --logfile /tmp/gpg_ex.log" >>/tmp/gpg_ex.log 2>&1 &
+  else
+    echo >&2 "WARNING: $wsl2_ssh_pageant_bin is not executable."
+  end
+end
+set --erase wsl2_ssh_pageant_bin
 
 function fish_right_prompt_loading_indicator -a last_prompt
     echo -n "$last_prompt" | sed -r 's/\x1B\[[0-9;]*[JKmsu]//g' | read -zl uncolored_last_prompt

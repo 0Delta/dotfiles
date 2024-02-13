@@ -127,5 +127,26 @@ function fish_right_prompt_loading_indicator -a last_prompt
     echo -n (set_color brblack)"$uncolored_last_prompt"(set_color normal)
 end
 
+# todoist
+if type -q todoist
+  alias todoist-cli='todoist'
+end
+if test -f ~/go/src/github.com/sachaos/todoist/todoist_functions.sh
+  source "~/go/src/github.com/sachaos/todoist/todoist_functions.sh"
+end
+function fish_user_key_bindings
+  # fzf
+  # fzf_key_bindings
+
+  # todoist
+  bind -M insert \eti fzf_todoist_item
+  bind -M insert \etp fzf_todoist_project
+  bind -M insert \etl fzf_todoist_labels
+  bind -M insert \etc fzf_todoist_close
+  bind -M insert \etd fzf_todoist_delete
+  bind -M insert \eto fzf_todoist_open
+  bind -M insert \ett fzf_todoist_date
+  bind -M insert \etq fzf_todoist_quick_add
+end
 fish_user_key_bindings
 

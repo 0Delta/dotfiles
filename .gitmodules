@@ -79,3 +79,6 @@
 [submodule ".vim/pack/0delta/opt/vim-showtime"]
 	path = .vim/pack/0delta/opt/vim-showtime
 	url = https://github.com/thinca/vim-showtime.git
+[submodule "vim/pack/0delta/start/preview-markdown.vim"]
+	path = vim/pack/0delta/start/preview-markdown.vim
+	url = https://github.com/skanehira/preview-markdown.vim.git

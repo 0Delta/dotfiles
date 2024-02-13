@@ -52,11 +52,6 @@ if type -q gcloud
   set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 end
 
-# terraform 0.13.1
-alias terraform13='docker run --rm -it -v $HOME/.config/gcloud:/root/.config/gcloud:ro -v $PWD:/app --workdir /app hashicorp/terraform:0.13.1'
-
-alias terraform112='docker run --rm -it -v $HOME/.config/gcloud:/root/.config/gcloud:ro -v $PWD:/app --workdir /app hashicorp/terraform:1.1.2'
-
 alias tree='pwd;find . | sort | sed \'1d;s/^\.//;s/\/\([^/]*\)$/|--\1/;s/\/[^/|]*/| /g\''
 
 # yubico

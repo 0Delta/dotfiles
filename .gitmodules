@@ -79,3 +79,48 @@
 [submodule ".vim/pack/0delta/opt/vim-showtime"]
 	path = .vim/pack/0delta/opt/vim-showtime
 	url = https://github.com/thinca/vim-showtime.git
+[submodule ".vim/pack/0delta/opt/vim-markdown-folding"]
+	path = .vim/pack/0delta/opt/vim-markdown-folding
+	url = https://github.com/masukomi/vim-markdown-folding.git
+[submodule ".vim/pack/0delta/start/vim-markdown-folding"]
+	path = .vim/pack/0delta/start/vim-markdown-folding
+	url = https://github.com/masukomi/vim-markdown-folding.git
+[submodule ".vim/pack/0delta/opt/vim-easymotion"]
+	path = .vim/pack/0delta/opt/vim-easymotion
+	url = https://github.com/easymotion/vim-easymotion.git
+[submodule ".vim/pack/0delta/start/vim-fern-hijack"]
+	path = .vim/pack/0delta/start/vim-fern-hijack
+	url = https://github.com/lambdalisue/vim-fern-hijack.git
+[submodule ".vim/pack/0delta/start/plenary.nvim"]
+	path = .vim/pack/0delta/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim
+[submodule ".vim/pack/0delta/start/CopilotChat.nvim"]
+	path = .vim/pack/0delta/start/CopilotChat.nvim
+	url = https://github.com/CopilotC-Nvim/CopilotChat.nvim
+[submodule ".vim/pack/0delta/start/fzf-lua"]
+	path = .vim/pack/0delta/start/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua.git
+[submodule ".vim/pack/0delta/opt/vim-which-key"]
+	path = .vim/pack/0delta/opt/vim-which-key
+	url = https://github.com/liuchengxu/vim-which-key.git
+[submodule ".vim/pack/0delta/opt/fzf-lua"]
+	path = .vim/pack/0delta/opt/fzf-lua
+	url = https://github.com/ibhagwan/fzf-lua.git
+[submodule ".vim/pack/0delta/opt/orgmode"]
+	path = .vim/pack/0delta/opt/orgmode
+	url = https://github.com/nvim-orgmode/orgmode
+[submodule ".emacs.d/plugins/evil-org-mode"]
+	path = .emacs.d/plugins/evil-org-mode
+	url = https://github.com/Somelauw/evil-org-mode.git
+[submodule ".tmux/tpm"]
+	path = .tmux/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule ".tmux/plugins/tmp"]
+	path = .tmux/plugins/tmp
+	url = https://github.com/tmux-plugins/tpm
+[submodule ".tmux/plugins/tpm"]
+	path = .tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
+[submodule ".vim/pack/0delta/opt/tagbar-markdown"]
+	path = .vim/pack/0delta/opt/tagbar-markdown
+	url = https://github.com/lvht/tagbar-markdown

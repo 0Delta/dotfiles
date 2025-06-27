@@ -124,3 +124,6 @@
 [submodule ".vim/pack/0delta/opt/tagbar-markdown"]
 	path = .vim/pack/0delta/opt/tagbar-markdown
 	url = https://github.com/lvht/tagbar-markdown
+[submodule ".vim/pack/0delta/start/copilot-chat.vim"]
+	path = .vim/pack/0delta/start/copilot-chat.vim
+	url = https://github.com/DanBradbury/copilot-chat.vim.git
